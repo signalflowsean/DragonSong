@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1265.21">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; min-height: 14.0px}
+    span.s1 {text-decoration: underline ; color: #0000ee}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Binaural FIR Example&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="utf-8"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="<a href="view-source:http://ircam-rnd.github.io/binauralFIR/binaural-fir.min.js"><span class="s1">../binaural-fir.min.js</span></a>"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="<a href="view-source:http://ircam-rnd.github.io/binauralFIR/examples/snd/complete_hrtfs.js"><span class="s1">./snd/complete_hrtfs.js</span></a>"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="<a href="view-source:http://ircam-rnd.github.io/binauralFIR/examples/js/jquery-1.11.1.min.js"><span class="s1">./js/jquery-1.11.1.min.js</span></a>"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="<a href="view-source:http://ircam-rnd.github.io/binauralFIR/examples/js/jquery.knob.js"><span class="s1">./js/jquery.knob.js</span></a>"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style type="text/css"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>input[type=range][orient=vertical]</p>
+<p class="p1"><span class="Apple-converted-space">    </span>{</p>
+<p class="p1"><span class="Apple-converted-space">        </span>writing-mode: bt-lr; /* IE */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>-webkit-appearance: slider-vertical; /* WebKit */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height: 175px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>padding: 0 5px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Binaural FIR Example&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>This example illustrates the use of the binauralFIR node to spatialize in real-time an incoming monophonic audio stream around the head of the listener. The process can be easily replicated for multiple sources or multichannel audio streams. In this implementation, the binaural process simply relies on the convolution of the incoming audio stream with Head Related Impulse Responses (HRIRs) measured on a human head in free field conditions (anechoïc room). See [1] for implementation details and implementation alternative.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>The GL edited user interface provides control of the rotation on the horizontal plane (azimuth), on the vertical dimension (elevation), and distance from the user. In the current version, the set of HRIRs is imposed. In a future release, the user interface will propose to download different sets of HRIRs from a public server that will host a database of individual HRIRs.</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>[1]<span class="Apple-converted-space">  </span>T. Carpentier, Binaural Synthesis with the Web Audio API, 1st Web Audio Conference (WAC15), Paris 2015</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;audio id="source" src="<a href="view-source:http://ircam-rnd.github.io/binauralFIR/examples/snd/breakbeat.wav"><span class="s1">./snd/breakbeat.wav</span></a>" controls loop&gt;&lt;/audio&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;center&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;pre&gt; Azimuth &lt;/pre&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="text" data-angleOffset=180 class="vs1" data-width="180" data-cursor=true data-thickness=".5"<span class="Apple-converted-space">  </span>data-min="-180" data-max="180" data-rotation="clockwise" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;pre&gt; Elevation &lt;/pre&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="range" min="-90" max="90" step="0.5" class="vs3" orient="vertical" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/center&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>var audioContext = new AudioContext();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>var targetNode = audioContext.destination;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// HRTF files loading</p>
+<p class="p1"><span class="Apple-converted-space">    </span>for (var i = 0; i &lt; hrtfs.length; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>var buffer = audioContext.createBuffer(2, 512, 44100);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>var bufferChannelLeft = buffer.getChannelData(0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>var bufferChannelRight = buffer.getChannelData(1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (var e = 0; e &lt; hrtfs[i].fir_coeffs_left.length; e++) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bufferChannelLeft[e] = hrtfs[i].fir_coeffs_left[e];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bufferChannelRight[e] = hrtfs[i].fir_coeffs_right[e];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>hrtfs[i].buffer = buffer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>//Create Audio Nodes</p>
+<p class="p1"><span class="Apple-converted-space">    </span>var mediaElement = document.getElementById('source');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>var player = audioContext.createMediaElementSource(mediaElement);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>var binauralFIRNode = new BinauralFIR({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>audioContext: audioContext</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>//Set HRTF dataset</p>
+<p class="p1"><span class="Apple-converted-space">    </span>binauralFIRNode.HRTFDataset = hrtfs;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>//Connect Audio Nodes</p>
+<p class="p1"><span class="Apple-converted-space">    </span>player.connect(binauralFIRNode.input);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>binauralFIRNode.connect(targetNode);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>binauralFIRNode.setPosition(0, 0, 1);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>$(".vs1").val(0);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>//Listeners of the knobs</p>
+<p class="p1"><span class="Apple-converted-space">    </span>$(".vs1").knob({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>'change': function(v) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>binauralFIRNode.setPosition(v, binauralFIRNode.getPosition().elevation, binauralFIRNode.getPosition().distance);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>$('.vs3').on("input", function(evt) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>binauralFIRNode.setPosition(binauralFIRNode.getPosition().azimuth, evt.target.value, binauralFIRNode.getPosition().distance);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
