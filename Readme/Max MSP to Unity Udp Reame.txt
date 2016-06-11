@@ -1,0 +1,8 @@
+README
+For UDP Communication Between Max MSP and Unity
+
+Open up Unity. 
+Open up MaxMSP either udpSend or udpReceive
+Launch Unity. 
+Either send data from Unity. 
+Or send data from Max
